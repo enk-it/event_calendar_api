@@ -1,0 +1,1 @@
+from api.events.models import Event  # noqa
