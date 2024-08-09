@@ -8,3 +8,13 @@ class EventSchema(BaseModel):
     title: str
     body: str
     date: datetime
+
+
+class FullEventSchema(EventSchema):
+    is_active: bool
+
+
+class CreateRequest(BaseModel):
+    title: str
+    body: str
+    date: datetime
