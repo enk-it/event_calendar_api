@@ -3,6 +3,7 @@ from uuid import UUID
 from fastapi import APIRouter, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from api.auth.dependencies import get_current_auth_user
 from api.database import get_session
 from api.events.exceptions import WrongEventId
 from api.events.schemas import EventSchema, CreateRequest, FullEventSchema
@@ -31,6 +32,7 @@ async def get_all_events(
 async def create_event(
         create_request: CreateRequest,
         session: AsyncSession = Depends(get_session),
+        auth=Depends(get_current_auth_user),
 ):
     event = await event_services.create_event(
         session,
@@ -47,6 +49,8 @@ async def create_event(
 async def activate_event(
         event_id: UUID,
         session: AsyncSession = Depends(get_session),
+        auth=Depends(get_current_auth_user),
+
 ):
     event = await event_services.get_event_by_id(
         session,
@@ -65,6 +69,7 @@ async def activate_event(
 async def deactivate_event(
         event_id: UUID,
         session: AsyncSession = Depends(get_session),
+        auth=Depends(get_current_auth_user),
 ):
     event = await event_services.get_event_by_id(
         session,

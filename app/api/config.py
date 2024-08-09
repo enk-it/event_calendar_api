@@ -15,5 +15,7 @@ class Settings:
     POSTGRES_PORT = os.getenv("POSTGRES_PORT")
     POSTGRES_DB = os.getenv("POSTGRES_DB")
 
+    ADMIN_KEY = os.getenv("ADMIN_KEY")
+
 
 settings = Settings()
