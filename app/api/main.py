@@ -23,3 +23,4 @@ app.add_middleware(
 
 app.include_router(events_router)
 
+# Добавить ссылку на картинку в модели ивента

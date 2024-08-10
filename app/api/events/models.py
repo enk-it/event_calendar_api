@@ -15,6 +15,7 @@ class Event(Base):
     )
     title = Column(String)
     body = Column(String)
+    img = Column(String)
 
     is_active = Column(
         Boolean,

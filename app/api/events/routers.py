@@ -23,6 +23,7 @@ async def get_active_events(
 @router.get("/all", response_model=list[FullEventSchema])
 async def get_all_events(
         session: AsyncSession = Depends(get_session),
+        auth=Depends(get_current_auth_user),
 ):
     events = await event_services.get_all_events(session, active_only=False)
     return events
@@ -38,6 +39,7 @@ async def create_event(
         session,
         create_request.title,
         create_request.body,
+        create_request.img,
         False,
         create_request.date,
     )

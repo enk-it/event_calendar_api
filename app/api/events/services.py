@@ -11,12 +11,14 @@ async def create_event(
         db: AsyncSession,
         title: str,
         body: str,
+        img: str,
         is_active: bool,
         date: datetime
 ) -> Event:
     event = Event()
     event.title = title
     event.body = body
+    event.img = img
     event.is_active = is_active
     event.date = date.replace(tzinfo=None)
     db.add(event)

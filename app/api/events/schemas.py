@@ -7,6 +7,7 @@ class EventSchema(BaseModel):
     id: UUID
     title: str
     body: str
+    img: str | None = None
     date: datetime
 
 
@@ -17,4 +18,5 @@ class FullEventSchema(EventSchema):
 class CreateRequest(BaseModel):
     title: str
     body: str
+    img: str
     date: datetime
